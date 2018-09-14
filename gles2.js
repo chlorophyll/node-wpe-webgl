@@ -14,12 +14,18 @@ var init = function(options) {
     return require('./lib/webgl').instance;
 };
 
+var initHeadless = function() {
+    gles2.initHeadless();
+    return require('./lib/webgl').instance;
+}
+
 var nextFrame = function(swapBuffers) {
     gles2.nextFrame((swapBuffers !== false));
 };
 
 module.exports = {
     init: init,
+    initHeadless: initHeadless,
     nextFrame: nextFrame
 };
 

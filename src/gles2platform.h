@@ -11,6 +11,7 @@ namespace gles2platform {
 void AtExit();
 
 NAN_METHOD(init);
+NAN_METHOD(initHeadless);
 NAN_METHOD(nextFrame);
 
 }

@@ -29,6 +29,14 @@ NAN_METHOD(init) {
   info.GetReturnValue().Set(Nan::Undefined());
 }
 
+NAN_METHOD(initHeadless) {
+  std::string message = gles2impl::initHeadless();
+  if (message.size()) {
+    Nan::ThrowRangeError(message.c_str());
+  }
+  info.GetReturnValue().Set(Nan::Undefined());
+}
+
 NAN_METHOD(nextFrame) {
   Nan::HandleScope scope;
 

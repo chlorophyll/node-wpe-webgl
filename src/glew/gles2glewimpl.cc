@@ -36,6 +36,25 @@ string init(int width, int height, bool fullscreen, std::string title, unsigned 
   return string("");
 }
 
+string initHeadless() {
+  if (!glfwInit()) {
+    return string("Can't init GLEW\n");
+  }
+
+  glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+
+  window = glfwCreateWindow(100, 100, "hidden glfw window", NULL, NULL);
+  if (!window) {
+      return string("Can't create window.");
+  }
+
+  /* Make the window's context current */
+  glfwMakeContextCurrent(window);
+
+  glewInit();
+  return "";
+}
+
 void nextFrame(bool swapBuffers) {
   if (glfwWindowShouldClose(window)) {
     exit(0);

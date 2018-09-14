@@ -10,6 +10,7 @@ void init(Handle<Object> target)
   atexit(webgl::WebGLRenderingContext::AtExit);
 
   Nan::SetMethod(target, "init", gles2platform::init);
+  Nan::SetMethod(target, "initHeadless", gles2platform::initHeadless);
   Nan::SetMethod(target, "nextFrame", gles2platform::nextFrame);
 
   webgl::WebGLRenderingContext::Initialize(target);
