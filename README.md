@@ -5,6 +5,13 @@ wpe-webgl
 [![npm](https://img.shields.io/npm/dt/wpe-webgl.svg)]()
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=55UJZHTXW8VTE)
 
+# Important
+You probably don't want this particular fork. The chlorophyll project adds
+tinkerboard ability, but due to specific requirements (floating point textures)
+it actually exposes a gles3 backed context but doesn't go all the way to
+supporting GLES3 generally. So, behavior in some cases is not as the caller
+might expect.
+
 Provides a WebGL rendering context for nodejs. It is displayed in a window or fullscreen, depending on your platform.
 
 # Notes
