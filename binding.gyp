@@ -10,6 +10,7 @@
         'has_glfw': '<!(pkg-config glfw3 --libs --silence-errors | grep glfw || true)',
         'has_nexus': '<!(pkg-config glesv2 egl --libs --silence-errors | grep nexus || true)',
         'has_bcm': '<!(pkg-config glesv2 egl --libs --silence-errors | grep bcm || true)',
+        'has_other_gles': '<!(pkg-config glesv2 egl --libs --silence-errors || true)',
         'has_raspbian': '<!(PKG_CONFIG_PATH=/opt/vc/lib/pkgconfig/ pkg-config brcmglesv2 brcmegl --libs --silence-errors | grep bcm || true)'
       },
       'include_dirs': [
@@ -50,6 +51,17 @@
           ],
           'libraries': ['<!@(pkg-config --libs egl glesv2)'],
           'include_dirs': [ '<!@(pkg-config egl glesv2 --cflags-only-I | sed s/-I//g)']
+        }],
+        ['OS=="linux" and has_glfw=="" and has_nexus=="" and has_other_gles!=""', {
+          'sources': [
+            'src/gles2/gles2impl.cc',
+            'src/bindings.cc',
+            'src/gles2platform.cc',
+            'src/interface/webgl.cc'
+          ],
+          'libraries': ['<!@(pkg-config --libs egl glesv2)'],
+          'include_dirs': ['/usr/include' ],
+          'cflags': [ '-fPIC -std=c++11' ],
         }],
         ['OS=="linux" and has_glfw=="" and has_nexus=="" and has_raspbian!=""', {
           'sources': [

@@ -9,7 +9,7 @@
     #ifdef IS_GLEW
     #include <GL/glew.h>
     #else
-    #include <GLES2/gl2.h>
+    #include <GLES3/gl3.h>
     #endif
 #endif
 
