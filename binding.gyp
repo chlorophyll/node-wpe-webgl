@@ -63,7 +63,7 @@
           'include_dirs': ['/usr/include' ],
           'cflags': [ '-fPIC -std=c++11' ],
         }],
-        ['OS=="linux" and has_glfw=="" and has_nexus=="" and has_raspbian!=""', {
+        ['OS=="linux" and has_glfw=="" and has_nexus=="" and has_other_gles=="" and  has_raspbian!=""', {
           'sources': [
             'src/rpi/gles2rpiimpl.cc',
             'src/bindings.cc',
