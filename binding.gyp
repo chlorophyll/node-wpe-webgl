@@ -26,7 +26,7 @@
             'src/gles2platform.cc',
             'src/interface/webgl.cc'
           ],
-          'libraries': ['<!@(pkg-config --libs glfw3 glew xcursor xrandr x11 xinerama)'],
+          'libraries': ['<!@(pkg-config --libs glfw3 glew xrandr x11)'],
           'defines': ['IS_GLEW']
         }],
         ['OS=="linux" and has_glfw=="" and has_nexus!=""', {
